@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connecting…</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Connecting account…</h1>
+  <p id="msg">Returning to TUSHM Autopost on this computer.</p>
+  <p class="muted">If nothing happens, make sure the Autopost app is running on this computer, then try again.</p>
+</main>
+<script>
+  // TikTok / Instagram redirect here (HTTPS). Hand the code to the local app.
+  var q = location.search;
+  if (/[?&](code|error)=/.test(q)) {
+    location.replace('http://localhost:8787/oauth/callback' + q);
+  } else {
+    document.getElementById('msg').textContent = 'No authorisation code received.';
+  }
+</script>
+</body>
+</html>
